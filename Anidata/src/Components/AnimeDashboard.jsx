@@ -23,7 +23,7 @@ const AnimeDashboard = () => {
     fetchAnime();
   }, []);
 
-  // Summary Statistics
+  
   const totalAnime = animeList.length;
   const avgRating = animeList.reduce((acc, anime) => acc + anime.score, 0) / totalAnime || 0;
 
@@ -36,7 +36,7 @@ const AnimeDashboard = () => {
 
   const mostCommonGenre = Object.keys(topGenre).reduce((a, b) => (topGenre[a] > topGenre[b] ? a : b), '');
 
-  // Handle Search
+  
   const handleSearch = (term) => {
     setSearchTerm(term);
     const searchResults = animeList.filter((anime) =>
@@ -45,7 +45,7 @@ const AnimeDashboard = () => {
     setFilteredAnime(searchResults);
   };
 
-  // Handle Filters
+ 
   const filterByGenre = (genre) => {
     const filtered = animeList.filter((anime) =>
       anime.genres.some((g) => g.name === genre)
@@ -62,20 +62,20 @@ const AnimeDashboard = () => {
     <div>
       <h1>Anime Dashboard</h1>
 
-      {/* Summary Statistics */}
+      {}
       <div className="statistics">
         <p>Total Anime: {totalAnime}</p>
         <p>Average Rating: {avgRating.toFixed(2)}</p>
         <p>Most Common Genre: {mostCommonGenre}</p>
       </div>
 
-      {/* SearchBar Component */}
+      {}
       <SearchBar searchTerm={searchTerm} onSearch={handleSearch} />
 
-      {/* Filters Component */}
+      {}
       <Filters onFilterByGenre={filterByGenre} onFilterByRating={filterByRating} />
 
-      {/* AnimeList Component */}
+      {}
       <AnimeList anime={filteredAnime} />
     </div>
   );

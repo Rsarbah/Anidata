@@ -2,7 +2,7 @@
 
 Submitted by: **Rafiatu Sarbah**
 
-This web app: **An app that shoes the statistics of various anime *
+This web app: **An app that shows the statistics of various anime *
 
 Time spent: **24** hours spent in total
 
@@ -34,7 +34,7 @@ Here's a walkthrough of implemented user stories:
 <img src='./src/anidata.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
+GIF created with LICEcap 
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
