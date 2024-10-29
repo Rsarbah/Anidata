@@ -3,6 +3,7 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 import Filters from './Filters';
 import AnimeList from './AnimeList';
+import { Link } from 'react-router-dom';
 
 const AnimeDashboard = () => {
   const [animeList, setAnimeList] = useState([]);
@@ -23,7 +24,6 @@ const AnimeDashboard = () => {
     fetchAnime();
   }, []);
 
-  
   const totalAnime = animeList.length;
   const avgRating = animeList.reduce((acc, anime) => acc + anime.score, 0) / totalAnime || 0;
 
@@ -36,7 +36,6 @@ const AnimeDashboard = () => {
 
   const mostCommonGenre = Object.keys(topGenre).reduce((a, b) => (topGenre[a] > topGenre[b] ? a : b), '');
 
-  
   const handleSearch = (term) => {
     setSearchTerm(term);
     const searchResults = animeList.filter((anime) =>
@@ -45,7 +44,6 @@ const AnimeDashboard = () => {
     setFilteredAnime(searchResults);
   };
 
- 
   const filterByGenre = (genre) => {
     const filtered = animeList.filter((anime) =>
       anime.genres.some((g) => g.name === genre)
@@ -58,24 +56,27 @@ const AnimeDashboard = () => {
     setFilteredAnime(filtered);
   };
 
+  const resetFilters = () => {
+    setFilteredAnime(animeList); // Reset to the full list
+    setSearchTerm(''); // Clear search term
+  };
+
   return (
     <div>
       <h1>Anime Dashboard</h1>
-
-      {}
       <div className="statistics">
         <p>Total Anime: {totalAnime}</p>
         <p>Average Rating: {avgRating.toFixed(2)}</p>
         <p>Most Common Genre: {mostCommonGenre}</p>
       </div>
 
-      {}
       <SearchBar searchTerm={searchTerm} onSearch={handleSearch} />
-
-      {}
-      <Filters onFilterByGenre={filterByGenre} onFilterByRating={filterByRating} />
-
-      {}
+      <Filters 
+        genres={[...new Set(animeList.flatMap(anime => anime.genres.map(g => g.name)))]} 
+        onFilterByGenre={filterByGenre} 
+        onFilterByRating={filterByRating} 
+        onResetFilters={resetFilters} 
+      />
       <AnimeList anime={filteredAnime} />
     </div>
   );

@@ -1,12 +1,19 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AnimeDashboard from './Components/AnimeDashboard';
-import './App.css'; 
+import AnimeDetail from './Components/AnimeDetail'; // Import your detail component
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <AnimeDashboard />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={AnimeDashboard} />
+          <Route path="/details/:id" component={AnimeDetail} /> {/* Detail view route */}
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
