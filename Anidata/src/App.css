@@ -1,14 +1,17 @@
 body {
   background-color: black;
-  color:white;
-
+  color: white;
+  text-align: center;
+  padding: 0px;
+  margin-left: 0;
+  margin-right: 0px;
+  margin: 0px;
+  
 }
-
-
 
 .App {
   font-family: Arial, sans-serif;
-  padding: 20px;
+  padding: 0px;
 }
 
 .statistics {
@@ -29,4 +32,39 @@ body {
   border: 1px solid #ddd;
   padding: 10px;
   width: 200px;
+  background-color: #333; /* Dark background for items */
+  border-radius: 5px; /* Rounded corners */
+  transition: transform 0.2s; /* Animation for hover effect */
+}
+
+.anime-item:hover {
+  transform: scale(1.05); /* Slightly scale on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow on hover */
+}
+
+.anime-item img {
+  border-radius: 5px; /* Round the image corners */
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px; /* Space below search bar */
+  width: 100%; /* Full width */
+}
+
+.filters button {
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555; /* Button background color */
+  color: white; /* Button text color */
+  cursor: pointer;
+  transition: background-color 0.2s; /* Smooth background color transition */
+}
+
+.filters button:hover {
+  background-color: #777; /* Darker color on hover */
 }

@@ -1,0 +1,14 @@
+.sidebar {
+    width: 250px; /* Width of the sidebar */
+    height: 1000px; /* Full height */
+    background-color: rgb(255, 221, 0); /* Background color */
+    padding: 0px; /* Padding */
+    position: fixed; /* Fixed positioning */
+    left: 0; /* Align to the left */
+    top: 0; /* Align to the top */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    
+    
+  }
+  

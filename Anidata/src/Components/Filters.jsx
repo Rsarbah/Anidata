@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Filters = ({ genres, onFilterByGenre, onFilterByRating, onResetFilters }) => {
+const Filters = ({ genres, onResetFilters, onFilterByGenre, onFilterByRating }) => {
   return (
     <div className="filters">
       <h3>Filter by Genre</h3>

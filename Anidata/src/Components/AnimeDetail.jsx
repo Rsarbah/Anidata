@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const AnimeDetail = () => {
-  const { id } = useParams(); // Extract ID from URL
+  const { id } = useParams(); 
   const [anime, setAnime] = useState(null);
 
   useEffect(() => {
     const fetchAnimeDetail = async () => {
       try {
         const response = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
-        setAnime(response.data.data); // Set anime details
+        setAnime(response.data.data); 
       } catch (error) {
         console.error('Error fetching anime detail:', error);
       }
@@ -27,8 +27,12 @@ const AnimeDetail = () => {
       <img src={anime.images.jpg.image_url} alt={anime.title} />
       <p>Rating: {anime.score}</p>
       <p>Genres: {anime.genres.map((g) => g.name).join(', ')}</p>
-      <p>Synopsis: {anime.synopsis}</p>
-      {/* Add more details as needed */}
+      <p>Episodes: {anime.episodes}</p>
+      <div>
+         <div>Synopsis: {anime.synopsis}</div>
+      </div>
+     
+      {}
     </div>
   );
 };

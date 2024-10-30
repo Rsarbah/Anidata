@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 import Filters from './Filters';
 import AnimeList from './AnimeList';
 import { Link } from 'react-router-dom';
+import MostRatedAnimeChart from './MostRatedAnimeChart'; 
 
 const AnimeDashboard = () => {
   const [animeList, setAnimeList] = useState([]);
@@ -23,7 +24,15 @@ const AnimeDashboard = () => {
 
     fetchAnime();
   }, []);
-
+  const mostRatedAnimeData = animeList
+    .slice() // Create a shallow copy of the animeList
+    .sort((a, b) => b.score - a.score) // Sort by score in descending order
+    .slice(0, 10) // Take top 10 most rated anime
+    .map(anime => ({
+      title: anime.title,
+      score: anime.score,
+    }));
+  
   const totalAnime = animeList.length;
   const avgRating = animeList.reduce((acc, anime) => acc + anime.score, 0) / totalAnime || 0;
 
@@ -36,6 +45,7 @@ const AnimeDashboard = () => {
 
   const mostCommonGenre = Object.keys(topGenre).reduce((a, b) => (topGenre[a] > topGenre[b] ? a : b), '');
 
+  
   const handleSearch = (term) => {
     setSearchTerm(term);
     const searchResults = animeList.filter((anime) =>
@@ -43,6 +53,7 @@ const AnimeDashboard = () => {
     );
     setFilteredAnime(searchResults);
   };
+
 
   const filterByGenre = (genre) => {
     const filtered = animeList.filter((anime) =>
@@ -55,12 +66,10 @@ const AnimeDashboard = () => {
     const filtered = animeList.filter((anime) => anime.score >= minRating);
     setFilteredAnime(filtered);
   };
-
   const resetFilters = () => {
-    setFilteredAnime(animeList); // Reset to the full list
-    setSearchTerm(''); // Clear search term
+    setFilteredAnime(animeList); 
+    setSearchTerm(''); 
   };
-
   return (
     <div>
       <h1>Anime Dashboard</h1>
@@ -78,6 +87,8 @@ const AnimeDashboard = () => {
         onResetFilters={resetFilters} 
       />
       <AnimeList anime={filteredAnime} />
+      {/* Add the Most Rated Anime Chart */}
+      <MostRatedAnimeChart data={mostRatedAnimeData} />
     </div>
   );
 };
